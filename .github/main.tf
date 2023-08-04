@@ -76,7 +76,7 @@ resource "github_branch_protection" "develop" {
   enforce_admins = true
 }
 
-resource "github_repository_deploy_key" "key" {
+resource "github_repository_deploy_key" "deploy_key" {
   title      = "DEPLOY_KEY"
   repository = github_repository.repository.name
   key        = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBDVNwt5xZYOVldpVQ3oX1BfyfH4Cu/YltawwynWXPDP wulfhere30@gmail.com"
