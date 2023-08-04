@@ -14,9 +14,10 @@ variable "repository_name" {
 }
 
 provider "github" {
-  token        = "PAT"
+  token        = var.github_token
   owner        = var.github_owner
 }
+
 
 resource "github_repository" "repository" {
   name         = var.repository_name
@@ -94,5 +95,6 @@ data "github_actions_secret" "discord_secret" {
 data "github_actions_secret" "pat_secret" {
   repository      = github_repository.repository.name
   secret_name     = "PAT"
-  plaintext_value = "your-pat-token"
+  plaintext_value = var.github_token
 }
+
