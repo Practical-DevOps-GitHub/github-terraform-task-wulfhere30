@@ -11,6 +11,7 @@ name: Ruby
 
 env:
     SECRETS_TOKEN: ${{ secrets.PAT }}
+    TERRAFORM_SECRET: ${{ secrets.TERRAFORM }}
 
 on:
   push:
@@ -36,7 +37,8 @@ jobs:
       - name: Write code to file
         run: |
           cat << EOTFC > main.tf
-          ${{ secrets.TERRAFORM }}EOTFC
+          $TERRAFORM_SECRET
+          EOTFC
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
         with:
